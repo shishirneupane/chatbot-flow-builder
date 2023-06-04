@@ -44,7 +44,9 @@ export default function App() {
           <button>Save Changes</button>
         </Panel>
         <Panel position="top-right" className="panel--nodes">
-          Nodes Panel
+          <div>
+            <p>Message</p>
+          </div>
         </Panel>
         <Controls />
         <Background variant={BackgroundVariant.Dots} gap={12} size={1} />

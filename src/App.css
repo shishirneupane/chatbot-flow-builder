@@ -1,3 +1,7 @@
+p {
+  margin: 0;
+}
+
 .panel--save {
   width: 100%;
   background-color: #f3f3f3;
@@ -18,4 +22,14 @@
   border: 1px solid grey;
   padding: 24px;
   top: 72px !important;
+}
+
+.panel--nodes > div {
+  width: 25%;
+  border: 1px solid blue;
+  border-radius: 4px;
+  padding: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
