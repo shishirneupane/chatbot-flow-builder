@@ -1,6 +1,5 @@
 import { useCallback } from "react";
 import ReactFlow, {
-  MiniMap,
   Controls,
   Background,
   useNodesState,
@@ -9,8 +8,11 @@ import ReactFlow, {
   BackgroundVariant,
   Node,
   Edge,
+  Connection,
+  Panel,
 } from "reactflow";
 
+import "./App.css";
 import "reactflow/dist/style.css";
 
 const initialNodes: Node[] = [
@@ -24,25 +26,27 @@ export default function App() {
   const [edges, setEdges, onEdgesChange] = useEdgesState(initialEdges);
 
   const onConnect = useCallback(
-    (params: any) =>
-      setEdges((eds) => {
-        console.log({ params, eds });
-        return addEdge(params, eds);
-      }),
+    (params: Connection) => setEdges((eds) => addEdge(params, eds)),
     [setEdges]
   );
 
   return (
     <div style={{ width: "100vw", height: "100vh" }}>
       <ReactFlow
+        fitView
         nodes={nodes}
         edges={edges}
         onNodesChange={onNodesChange}
         onEdgesChange={onEdgesChange}
         onConnect={onConnect}
       >
+        <Panel position="top-right" className="panel--save">
+          <button>Save Changes</button>
+        </Panel>
+        <Panel position="top-right" className="panel--nodes">
+          Nodes Panel
+        </Panel>
         <Controls />
-        <MiniMap />
         <Background variant={BackgroundVariant.Dots} gap={12} size={1} />
       </ReactFlow>
     </div>
